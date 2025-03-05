@@ -1,17 +1,15 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class SceneSwapObject : MonoBehaviour
+public class SceneSwapObject : MonoBehaviour, IPointerDownHandler
 {
 
     [SerializeField]
     private string sceneName;
 
-    public void OnMouseOver()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene(sceneName);
-        }
+        SceneManager.LoadScene(sceneName);
     }
 }

@@ -1,16 +1,15 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class ChooseAnimal : MonoBehaviour
+public class ChooseAnimal : MonoBehaviour, IPointerDownHandler
 {
 
     [SerializeField]
     private PlayerManager.aniamls animalChoice;
 
-    public void OnMouseOver()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            PlayerManager.chosenAnimal = animalChoice;
-        }   
+        PlayerManager.chosenAnimal = animalChoice;
     }
 }
