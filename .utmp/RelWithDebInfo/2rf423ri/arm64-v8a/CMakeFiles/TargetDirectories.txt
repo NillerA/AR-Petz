@@ -1,0 +1,5 @@
+C:/Users/m00ni/UnityProjects/AR-Petz/.utmp/RelWithDebInfo/2rf423ri/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/m00ni/UnityProjects/AR-Petz/.utmp/RelWithDebInfo/2rf423ri/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/m00ni/UnityProjects/AR-Petz/.utmp/RelWithDebInfo/2rf423ri/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/m00ni/UnityProjects/AR-Petz/.utmp/RelWithDebInfo/2rf423ri/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/m00ni/UnityProjects/AR-Petz/.utmp/RelWithDebInfo/2rf423ri/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
