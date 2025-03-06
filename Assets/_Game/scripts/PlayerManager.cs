@@ -14,6 +14,6 @@ public static class PlayerManager
         Rabbit,
         Goldfish
     }
-    public static aniamls chosenAnimal = aniamls.Cat;
+    public static aniamls chosenAnimal = aniamls.Dog;
 
 }

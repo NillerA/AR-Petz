@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.XR.ARFoundation;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
@@ -10,12 +9,50 @@ public class ARCursor : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject _cursorChildObject, _objectToPlace;
+    private GameObject _cursorChildObject;
+    GameObject _objectToPlace;
+    [SerializeField]
+    private GameObject
+        _cat,
+        _dog,
+        _mouse,
+        _parrot,
+        _turtoise,
+        _rabbit,
+        _goldfish;
     [SerializeField]
     private ARRaycastManager _raycastManager;
 
     [SerializeField]
     private bool _useCursor = true;
+
+    private void Awake()
+    {
+        switch (PlayerManager.chosenAnimal)
+        {
+            case PlayerManager.aniamls.Cat:
+                _objectToPlace = _cat;
+                return;
+            case PlayerManager.aniamls.Dog:
+                _objectToPlace = _dog;
+                return;
+            case PlayerManager.aniamls.Mouse:
+                _objectToPlace = _mouse;
+                return;
+            case PlayerManager.aniamls.Goldfish:
+                _objectToPlace = _goldfish;
+                return;
+            case PlayerManager.aniamls.Turtoise:
+                _objectToPlace = _turtoise;
+                return;
+            case PlayerManager.aniamls.Parrot:
+                _objectToPlace = _parrot;
+                return;
+            case PlayerManager.aniamls.Rabbit:
+                _objectToPlace = _rabbit;
+                return;
+        }
+    }
 
     void Start()
     {
