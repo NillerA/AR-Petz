@@ -6,38 +6,35 @@ public class ARCursor : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject CursorChildObject, ObjectToPlace;
+    private GameObject _cursorChildObject, _objectToPlace;
     [SerializeField]
-    ARRaycastManager raycastManager;
+    private ARRaycastManager _raycastManager;
 
     [SerializeField]
-    private bool useCursor = true;
+    private bool _useCursor = true;
 
     void Start()
     {
-        CursorChildObject.SetActive(useCursor);
+        _cursorChildObject.SetActive(_useCursor);
     }
 
     void Update()
     {
-        if (useCursor)
+        if (_useCursor)
         {
             UpdateCursor();
-        }
 
-        //do the placement thing
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                Instantiate(_objectToPlace, transform.position, transform.rotation);
+            }
+        }
     }
 
     private void UpdateCursor()
     {
         Vector2 screenCursorPosition = Camera.main.ViewportToScreenPoint(new Vector2(0.5f, 0.5f));
         List<ARRaycastHit> hits = new List<ARRaycastHit>();
-        raycastManager.Raycast(screenCursorPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
-
-        if (hits.Count > 0)
-        {
-            transform.position = hits[0].pose.position;
-            transform.rotation = hits[0].pose.rotation;
-        }
+        _raycastManager.Raycast(screenCursorPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
     }
 }
