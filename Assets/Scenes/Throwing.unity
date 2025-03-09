@@ -1362,8 +1362,8 @@ MonoBehaviour:
   throwableSpawner: {fileID: 1444168550}
   playerInput: {fileID: -944628639613478452, guid: e474280e67975df4293f0ff8c4452e20,
     type: 3}
-  throwMaxForce: 10
-  throwMinForce: 10
+  throwMaxForce: 3
+  throwMinForce: 1
 --- !u!1 &1741453406
 GameObject:
   m_ObjectHideFlags: 0

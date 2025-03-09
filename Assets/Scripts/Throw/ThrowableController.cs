@@ -1,20 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 public class ThrowableController : MonoBehaviour
 {
     [SerializeField] Camera cam;
     [SerializeField] ThrowableSpawner throwableSpawner;
     [SerializeField] InputActionAsset playerInput;
 
-    [SerializeField] float throwMaxForce;
-    [SerializeField] float throwMinForce;
+    [SerializeField] float throwMaxForce = 3f;
+    [SerializeField] float throwMinForce = 1f;
 
     private Throwable currentThrowable;
     private Vector3 spawnPosition;
     private InputAction touchPress;
     private InputAction touchPosition;
-
+    private float startTime;
     private bool isDragging;
     private float touchSpeed;
     private Vector2 startTouchPos, endTouchPos;
@@ -22,7 +24,12 @@ public class ThrowableController : MonoBehaviour
 
     private void Awake()
     {
-        if(cam == null)
+        EnhancedTouchSupport.Enable();//enables the touch input to be read in the touch variable
+#if UNITY_EDITOR
+        TouchSimulation.Enable();//simulates touch in the editor
+#endif
+
+        if (cam == null)
         {
             cam = Camera.main;
         }
@@ -32,76 +39,93 @@ public class ThrowableController : MonoBehaviour
             playerInput = new InputActionAsset();
         }
 
-        touchPress = playerInput.FindActionMap("MobileTouch").FindAction("Press");
         touchPosition = playerInput.FindActionMap("MobileTouch").FindAction("Position");
     }
 
     private void OnEnable()
     {
-        touchPress.performed += OnPress;
-        touchPress.canceled += OnRelease;
-        touchPress.Enable();
         touchPosition.Enable();
     }
 
     private void OnDisable()
     {
-        touchPress.performed -= OnPress;
-        touchPress.canceled -= OnRelease;
-        touchPress.Disable();
         touchPosition.Disable();
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        currentThrowable = throwableSpawner.currentThrowable;
-        if (!isDragging) return;
-
-    }
-
-    private void OnPress(InputAction.CallbackContext context)
-    {
-        Debug.Log("OnPress");
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+        if (Touch.activeTouches.Count > 0)
         {
-            Debug.Log("OnPress if");
+            var touch = Touch.activeTouches[0];
             Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-            Ray ray = cam.ScreenPointToRay(touchPosition);
-            if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider.gameObject == currentThrowable.gameObject)
+
+            if (touch.phase == TouchPhase.Began)
             {
-                Debug.Log("OnPress if if");
-                isDragging = true;
+                if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+                {
+                    Ray ray = cam.ScreenPointToRay(touchPosition);
+                    if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider.gameObject == currentThrowable.gameObject)
+                    {
+                        isDragging = true;
+                        startTouchPos = touchPosition;
+                        startTime = Time.time;
+                    }
+                }
+            }
+
+
+            else if (touch.phase == TouchPhase.Moved)
+            {
+                if (isDragging)
+                {
+                    Ray ray = cam.ScreenPointToRay(touchPosition);
+                    if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider.gameObject == currentThrowable.gameObject)
+                    {
+                        currentThrowable.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.WorldToScreenPoint(transform.position).z));
+                    }
+                }
+            }
+            else if (touch.phase == TouchPhase.Stationary)
+            {
                 startTouchPos = touchPosition;
+            }
+
+
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                if (!isDragging) return;
+                isDragging = false;
+                endTouchPos = touchPosition;
+                float endTime = Time.time;
+
+                float distance = Vector2.Distance(startTouchPos, endTouchPos);
+                float timeTaken = endTime - startTime;
+                float speed = distance / timeTaken;
+                Debug.Log(speed);
+                if (speed < 800f) return;
+                float force = Mathf.Lerp(throwMinForce, throwMaxForce, Mathf.InverseLerp(800f, 5500f, speed));
+                Vector2 swipeDirection = (endTouchPos - startTouchPos).normalized;
+                Debug.Log("what");
+                if (swipeDirection.y < 0) return;
+                ThrowBall(swipeDirection, force);
             }
         }
     }
 
-    private void OnRelease(InputAction.CallbackContext context)
-    {
-        Debug.Log("OnRelease");
-        if (!isDragging) return;
-
-        Debug.Log("OnRelease if");
-
-        if (Touchscreen.current != null)
+    private void FixedUpdate()
         {
-            isDragging = false;
-            Debug.Log("OnRelease if if");
-            endTouchPos = Touchscreen.current.primaryTouch.position.ReadValue();
-            Vector2 swipeDirection = endTouchPos - startTouchPos;
-            ThrowBall(swipeDirection);
+            currentThrowable = throwableSpawner.currentThrowable;
         }
-    }
 
-    private void ThrowBall(Vector2 swipeDirection)
+    private void ThrowBall(Vector2 swipeDirection, float force)
     {
-        Debug.Log("Throwing");
+        Debug.Log("throw");
         throwableSpawner.ReleaseThrowable();
         currentThrowable.rb.constraints = RigidbodyConstraints.None;
         currentThrowable.rb.useGravity = true;
-        Vector3 throwDirection = new Vector3(swipeDirection.x, Mathf.Abs(swipeDirection.y), 1f);
-        currentThrowable.rb.linearVelocity = throwDirection.normalized * throwMaxForce;
-        
+        Vector3 throwDirection = (cam.transform.rotation * (Vector3)swipeDirection).normalized;
+        currentThrowable.rb.linearVelocity = new Vector3(throwDirection.x * 2, throwDirection.y, throwDirection.z) * force;
+        Debug.Log(currentThrowable.rb.linearVelocity);
     }
 
 }
