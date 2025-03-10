@@ -26,6 +26,9 @@ public class ARCursor : MonoBehaviour
     [SerializeField]
     private bool _useCursor = true;
 
+    private bool _spawned;
+    private Animal _spawnedAnimal;
+    
     private void Awake()
     {
         switch (PlayerManager.chosenAnimal)
@@ -71,7 +74,16 @@ public class ARCursor : MonoBehaviour
 
             if (Touch.activeTouches.Count > 0 && Touch.activeTouches[0].phase == TouchPhase.Ended)
             {
-                Instantiate(_objectToPlace, transform.position, transform.rotation);
+                if (_spawned) 
+                {
+                    Debug.Log("Walk to location: " + transform.position.ToString());
+                    StartCoroutine(_spawnedAnimal.walkTo(transform.position));
+                }
+                else
+                {
+                    _spawnedAnimal = Instantiate(_objectToPlace, transform.position, transform.rotation).GetComponent<Animal>();
+                    _spawned = true;
+                }
             }
         }
     }
