@@ -1343,7 +1343,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTime: 1
   test: {fileID: 2027928890199831980, guid: 2997543edf929e04d8a7f880ef1aab22, type: 3}
-  food: {fileID: 2027928890199831980, guid: c06bd4ce31e89054a9db4b3959309af0, type: 3}
+  throwables:
+  - {fileID: -1984681587016047698, guid: 31736fb7ebc889c4db07ee2bbd76950a, type: 3}
+  - {fileID: -1984681587016047698, guid: dfd8891effddaeb49aa43a446db0de8a, type: 3}
+  - {fileID: -1984681587016047698, guid: a318e5f98d67c2a4a846477eb79180c4, type: 3}
+  - {fileID: -1984681587016047698, guid: 3cab3c5ed0cf1b240b87f6aae2f99bde, type: 3}
   testButton: {fileID: 98121096}
   foodButton: {fileID: 302847339}
 --- !u!114 &1444168551

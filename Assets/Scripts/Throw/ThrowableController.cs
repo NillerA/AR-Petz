@@ -13,7 +13,6 @@ public class ThrowableController : MonoBehaviour
     [SerializeField] float throwMinForce = 1f;
 
     private Throwable currentThrowable;
-    private Vector3 spawnPosition;
     private InputAction touchPress;
     private InputAction touchPosition;
     private float startTime;
@@ -101,11 +100,13 @@ public class ThrowableController : MonoBehaviour
                 float distance = Vector2.Distance(startTouchPos, endTouchPos);
                 float timeTaken = endTime - startTime;
                 float speed = distance / timeTaken;
-                Debug.Log(speed);
-                if (speed < 800f) return;
+                if (speed < 800f)
+                {
+                    Destroy(throwableSpawner.currentThrowable.gameObject);
+                    return;
+                }
                 float force = Mathf.Lerp(throwMinForce, throwMaxForce, Mathf.InverseLerp(800f, 5500f, speed));
                 Vector2 swipeDirection = (endTouchPos - startTouchPos).normalized;
-                Debug.Log("what");
                 if (swipeDirection.y < 0) return;
                 ThrowBall(swipeDirection, force);
             }
@@ -119,12 +120,11 @@ public class ThrowableController : MonoBehaviour
 
     private void ThrowBall(Vector2 swipeDirection, float force)
     {
-        Debug.Log("throw");
         throwableSpawner.ReleaseThrowable();
         currentThrowable.rb.constraints = RigidbodyConstraints.None;
         currentThrowable.rb.useGravity = true;
         Vector3 throwDirection = (cam.transform.rotation * (Vector3)swipeDirection).normalized;
-        currentThrowable.rb.linearVelocity = new Vector3(throwDirection.x * 2, throwDirection.y, throwDirection.z) * force;
+        currentThrowable.rb.linearVelocity = (new Vector3(throwDirection.x, throwDirection.y, throwDirection.z) + cam.transform.forward).normalized * force;
         Debug.Log(currentThrowable.rb.linearVelocity);
     }
 

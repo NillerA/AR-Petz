@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/m00ni/UnityProjects/AR-Petz/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp"
+			"value" : "C:/Users/m00ni/UnityProjects/AR-Petz/Library/PramData/AndroidApplicationController/Cache/com.unity.template.ar_mobile/gradle-project/unityLibrary/src/main/cpp"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -695,7 +695,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "C:\\Users\\m00ni\\UnityProjects\\AR-Petz\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\Debug\\664v1o3o\\obj\\arm64-v8a"
+			"value" : "C:\\Users\\m00ni\\UnityProjects\\AR-Petz\\Library\\PramData\\AndroidApplicationController\\Cache\\com.unity.template.ar_mobile\\gradle-project\\unityLibrary\\build\\intermediates\\cxx\\Debug\\664v1o3o\\obj\\arm64-v8a"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -967,7 +967,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "C:\\Users\\m00ni\\UnityProjects\\AR-Petz\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\Debug\\664v1o3o\\obj\\arm64-v8a"
+			"value" : "C:\\Users\\m00ni\\UnityProjects\\AR-Petz\\Library\\PramData\\AndroidApplicationController\\Cache\\com.unity.template.ar_mobile\\gradle-project\\unityLibrary\\build\\intermediates\\cxx\\Debug\\664v1o3o\\obj\\arm64-v8a"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1263,7 +1263,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/m00ni/UnityProjects/AR-Petz/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp"
+			"value" : "C:/Users/m00ni/UnityProjects/AR-Petz/Library/PramData/AndroidApplicationController/Cache/com.unity.template.ar_mobile/gradle-project/unityLibrary/src/main/cpp"
 		},
 		{
 			"name" : "game-activity_DIR",
@@ -1323,7 +1323,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/m00ni/UnityProjects/AR-Petz/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity"
+			"value" : "C:/Users/m00ni/UnityProjects/AR-Petz/Library/PramData/AndroidApplicationController/Cache/com.unity.template.ar_mobile/gradle-project/unityLibrary/src/main/cpp/GameActivity"
 		}
 	],
 	"kind" : "cache",

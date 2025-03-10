@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/m00ni/UnityProjects/AR-Petz/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity
+# Install script for directory: C:/Users/m00ni/UnityProjects/AR-Petz/Library/PramData/AndroidApplicationController/Cache/com.unity.template.ar_mobile/gradle-project/unityLibrary/src/main/cpp/GameActivity
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

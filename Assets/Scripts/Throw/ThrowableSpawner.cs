@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class ThrowableSpawner : MonoBehaviour
     [SerializeField] private float spawnTime;
 
     [SerializeField] private Throwable test;
-    [SerializeField] private Throwable food;
+    [SerializeField] private List<Throwable> throwables = new List<Throwable>();
     [SerializeField] private Button testButton;
     [SerializeField] private Button foodButton;
 
@@ -36,14 +37,11 @@ public class ThrowableSpawner : MonoBehaviour
         isSpawning = true;
         if(currentThrowable != null)
         {
-            Debug.Log("current is not null");
             Destroy(currentThrowable.gameObject);
             currentThrowable = null;
-            yield return null;
         }
         else
         {
-            Debug.Log("current is null");
             yield return new WaitForSeconds(spawnTime);
         }
 
@@ -54,7 +52,7 @@ public class ThrowableSpawner : MonoBehaviour
                     break;
 
                 case ThrowSetting.FOOD:
-                    currentThrowable = Instantiate(food, transform, false);
+                    currentThrowable = Instantiate(throwables[Random.Range(0, throwables.Count)], transform, false);
                     break;
             }
         isSpawning = false;
