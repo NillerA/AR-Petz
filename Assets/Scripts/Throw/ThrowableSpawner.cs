@@ -24,10 +24,13 @@ public class ThrowableSpawner : MonoBehaviour
         {
             Button buttonTemp = Instantiate(button, content);
             TextMeshProUGUI buttonText = buttonTemp.GetComponentInChildren<TextMeshProUGUI>();
-            Debug.Log(buttonText);
             if (buttonText != null)
             {
                 buttonText.text = throwable.named;
+            }
+            if(throwable.uIImage != null)
+            {
+                buttonTemp.image.sprite = throwable.uIImage;
             }
             buttonTemp.onClick.AddListener(() => {lastThrowable = throwable.prefab; StartCoroutine(SetThrowable());});
         }

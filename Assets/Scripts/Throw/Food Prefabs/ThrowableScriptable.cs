@@ -5,5 +5,5 @@ public class ThrowableScriptable : ScriptableObject
 {
     public Throwable prefab;
     public string named;
-    public int uiImage;
+    public Sprite uIImage;
 }

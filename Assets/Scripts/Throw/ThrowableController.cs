@@ -13,11 +13,9 @@ public class ThrowableController : MonoBehaviour
     [SerializeField] float throwMinForce = 1f;
 
     private Throwable currentThrowable;
-    private InputAction touchPress;
     private InputAction touchPosition;
     private float startTime;
     private bool isDragging;
-    private float touchSpeed;
     private Vector2 startTouchPos, endTouchPos;
 
 
@@ -86,7 +84,10 @@ public class ThrowableController : MonoBehaviour
             }
             else if (touch.phase == TouchPhase.Stationary)
             {
-                startTouchPos = touchPosition;
+                if (isDragging)
+                {
+                    startTouchPos = touchPosition;
+                }
             }
 
 
@@ -125,7 +126,6 @@ public class ThrowableController : MonoBehaviour
         currentThrowable.rb.useGravity = true;
         Vector3 throwDirection = (cam.transform.rotation * (Vector3)swipeDirection).normalized;
         currentThrowable.rb.linearVelocity = (new Vector3(throwDirection.x, throwDirection.y, throwDirection.z) + cam.transform.forward).normalized * force;
-        Debug.Log(currentThrowable.rb.linearVelocity);
     }
 
 }
