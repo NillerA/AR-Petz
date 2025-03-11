@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ThrowableSpawner : MonoBehaviour
 {
     [SerializeField] private float spawnTime;
-
-    [SerializeField] private Throwable test;
-    [SerializeField] private List<Throwable> throwables = new List<Throwable>();
-    [SerializeField] private Button testButton;
-    [SerializeField] private Button foodButton;
+    [SerializeField] private RectTransform content;
+    [SerializeField] private Button button;
+    [SerializeField] private List<ThrowableScriptable> throwables = new List<ThrowableScriptable>();
+    [SerializeField] private Button noFood;
 
     public Throwable currentThrowable { get; private set; }
 
-    private ThrowSetting throwSetting;
+    private Throwable lastThrowable;
     private bool isSpawning;
 
     void Start()
     {
-        testButton.onClick.AddListener(() => { throwSetting = ThrowSetting.TEST; StartCoroutine(SetThrowable());});
-        foodButton.onClick.AddListener(() => { throwSetting = ThrowSetting.FOOD; StartCoroutine(SetThrowable()); });
+        noFood.onClick.AddListener(() => { Destroy(currentThrowable.gameObject); lastThrowable = null; });
+        foreach (ThrowableScriptable throwable in throwables)
+        {
+            Button buttonTemp = Instantiate(button, content);
+            TextMeshProUGUI buttonText = buttonTemp.GetComponentInChildren<TextMeshProUGUI>();
+            Debug.Log(buttonText);
+            if (buttonText != null)
+            {
+                buttonText.text = throwable.named;
+            }
+            buttonTemp.onClick.AddListener(() => {lastThrowable = throwable.prefab; StartCoroutine(SetThrowable());});
+        }
     }
 
 
@@ -44,17 +54,9 @@ public class ThrowableSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnTime);
         }
+        if (lastThrowable == null) yield break;
+        currentThrowable = Instantiate(lastThrowable, transform, false);
 
-        switch (throwSetting)
-            {
-                case ThrowSetting.TEST:
-                    currentThrowable = Instantiate(test, transform, false);
-                    break;
-
-                case ThrowSetting.FOOD:
-                    currentThrowable = Instantiate(throwables[Random.Range(0, throwables.Count)], transform, false);
-                    break;
-            }
         isSpawning = false;
     }
 
@@ -64,10 +66,4 @@ public class ThrowableSpawner : MonoBehaviour
         currentThrowable = null;
     }
 
-}
-
-public enum ThrowSetting
-{
-    TEST,
-    FOOD,
 }
