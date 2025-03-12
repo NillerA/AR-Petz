@@ -33,25 +33,25 @@ public class ARCursor : MonoBehaviour
     {
         switch (PlayerManager.chosenAnimal)
         {
-            case PlayerManager.aniamls.Cat:
+            case PlayerManager.animals.Cat:
                 _objectToPlace = _cat;
                 return;
-            case PlayerManager.aniamls.Dog:
+            case PlayerManager.animals.Dog:
                 _objectToPlace = _dog;
                 return;
-            case PlayerManager.aniamls.Mouse:
+            case PlayerManager.animals.Mouse:
                 _objectToPlace = _mouse;
                 return;
-            case PlayerManager.aniamls.Goldfish:
+            case PlayerManager.animals.Goldfish:
                 _objectToPlace = _goldfish;
                 return;
-            case PlayerManager.aniamls.Turtoise:
+            case PlayerManager.animals.Turtoise:
                 _objectToPlace = _turtoise;
                 return;
-            case PlayerManager.aniamls.Parrot:
+            case PlayerManager.animals.Parrot:
                 _objectToPlace = _parrot;
                 return;
-            case PlayerManager.aniamls.Rabbit:
+            case PlayerManager.animals.Rabbit:
                 _objectToPlace = _rabbit;
                 return;
         }
@@ -77,7 +77,7 @@ public class ARCursor : MonoBehaviour
                 if (_spawned) 
                 {
                     Debug.Log("Walk to location: " + transform.position.ToString());
-                    StartCoroutine(_spawnedAnimal.walkTo(transform.position));
+                    StartCoroutine(_spawnedAnimal.walkTo(transform.position, false));
                 }
                 else
                 {

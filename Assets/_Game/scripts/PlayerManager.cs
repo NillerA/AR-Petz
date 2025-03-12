@@ -6,7 +6,7 @@ public static class PlayerManager
 {
 
     public static int food = 5;
-    public enum aniamls
+    public enum animals
     {
         Cat,
         Dog,
@@ -16,14 +16,10 @@ public static class PlayerManager
         Rabbit,
         Goldfish
     }
-    public static aniamls chosenAnimal = aniamls.Dog;
+    public static animals chosenAnimal = animals.Cat;
 
     public static animalInfo animalInfo = new animalInfo();
 
-    //public static IEnumerator()
-    //{
-    //    yield return new WaitForSeconds(1);
-    //}
 }
 
 public class animalInfo

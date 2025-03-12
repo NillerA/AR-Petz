@@ -6,7 +6,7 @@ public class ChooseAnimal : MonoBehaviour, IPointerDownHandler
 {
 
     [SerializeField]
-    private PlayerManager.aniamls animalChoice;
+    private PlayerManager.animals animalChoice;
 
     public void OnPointerDown(PointerEventData eventData)
     {
