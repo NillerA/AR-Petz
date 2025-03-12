@@ -76,8 +76,8 @@ public class ARCursor : MonoBehaviour
             {
                 if (_spawned) 
                 {
-                    Debug.Log("Walk to location: " + transform.position.ToString());
-                    StartCoroutine(_spawnedAnimal.walkTo(transform.position, false));
+                    //Debug.Log("Walk to location: " + transform.position.ToString());
+                    //StartCoroutine(_spawnedAnimal.walkTo(transform.position, false));
                 }
                 else
                 {

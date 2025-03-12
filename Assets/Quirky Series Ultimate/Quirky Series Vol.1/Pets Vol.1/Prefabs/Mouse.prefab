@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: -7995480950069883961}
   m_Layer: 0
   m_Name: Mouse
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -676,6 +676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
+  _hungerConsubtionRate: 5
+  _HappinessConsubtionRate: 5
 --- !u!1 &8858668345728738822
 GameObject:
   m_ObjectHideFlags: 0

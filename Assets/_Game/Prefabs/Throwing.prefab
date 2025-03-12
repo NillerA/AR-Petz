@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5435227457825802320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3194215301040544494}
+  - component: {fileID: 2819189041249657668}
+  - component: {fileID: 255148726054614559}
+  m_Layer: 0
+  m_Name: Throwing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3194215301040544494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435227457825802320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2819189041249657668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435227457825802320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181bed35f78ef7e439d6272445af91c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  throwableSpawner: {fileID: 255148726054614559}
+  playerInput: {fileID: -944628639613478452, guid: e474280e67975df4293f0ff8c4452e20,
+    type: 3}
+  throwMaxForce: 3
+  throwMinForce: 1
+--- !u!114 &255148726054614559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435227457825802320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96f9475a4c63734c835d45078e7799a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 0.5
+  content: {fileID: 0}
+  button: {fileID: 5379578507459595680, guid: 1ebc0355aa340ed408675397af6a6985, type: 3}
+  throwables:
+  - {fileID: 11400000, guid: cff4dc2b51c7140429df23c995bcb4ce, type: 2}
+  - {fileID: 11400000, guid: 817677cca22f58745880b7519249a301, type: 2}
+  - {fileID: 11400000, guid: e50795635f9ac654a9eaed3247aa0238, type: 2}
+  - {fileID: 11400000, guid: 2d2d969b7d3ed6549afded2c32ccf2e0, type: 2}
+  - {fileID: 11400000, guid: 6a769061bb48af7499c0e208945a48f9, type: 2}
+  - {fileID: 11400000, guid: 379dac9c87abe8e419319d2bd561a436, type: 2}
+  - {fileID: 11400000, guid: 445a4d846f1c18844b0d49a0b0c2dde1, type: 2}
+  noFood: {fileID: 0}

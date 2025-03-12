@@ -29,4 +29,9 @@ public class Throwable : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        rb.isKinematic = true;
+        GameObject.FindWithTag("Animal").GetComponent<Animal>().walkTo(transform.position, true);
+    }
 }

@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: -1552069294472228177}
   m_Layer: 0
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,6 +480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
+  _hungerConsubtionRate: 5
+  _HappinessConsubtionRate: 5
 --- !u!1 &6647131507186470326
 GameObject:
   m_ObjectHideFlags: 0
