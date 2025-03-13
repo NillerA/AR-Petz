@@ -14,24 +14,10 @@ public class Throwable : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         rb.isKinematic = true;
-        GameObject.FindWithTag("Animal").GetComponent<Animal>().walkTo(transform.position, true);
+        StartCoroutine(PlayerManager.animal.GetComponent<Animal>().walkTo(transform.position, true, gameObject));
+        //GameObject.FindWithTag("Animal").GetComponent<Animal>().walkTo(transform.position, true);
     }
 }

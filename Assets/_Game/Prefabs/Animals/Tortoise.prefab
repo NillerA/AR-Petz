@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6606228269694984065}
   - component: {fileID: 6606228269694984070}
   - component: {fileID: 6606228269694984067}
+  - component: {fileID: 3367914893137376538}
   m_Layer: 0
   m_Name: Tortoise
   m_TagString: Animal
@@ -115,6 +116,21 @@ CapsuleCollider:
   m_Height: 0.9149772
   m_Direction: 2
   m_Center: {x: 0, y: 0.29863143, z: 0.07295734}
+--- !u!114 &3367914893137376538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606228269694984071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d876392a85ab94eabad9a0f8e9ea7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
+  _hungerConsubtionRate: 5
+  _HappinessConsubtionRate: 5
 --- !u!1 &6606228269740665293
 GameObject:
   m_ObjectHideFlags: 0

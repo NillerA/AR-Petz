@@ -19,6 +19,7 @@ public static class PlayerManager
     public static animals chosenAnimal = animals.Cat;
 
     public static animalInfo animalInfo = new animalInfo();
+    public static GameObject animal;
 
 }
 

@@ -415,14 +415,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cursorChildObject: {fileID: 1997370662}
-  _cat: {fileID: 6647131506220806907, guid: 27e82c8a2f2dc474a8d10d84ae09e664, type: 3}
-  _dog: {fileID: 1693816920450361209, guid: 8d863aa0b58a54345a3b739c9e0954cf, type: 3}
-  _mouse: {fileID: 8858668344987094152, guid: b78cbd54c6fc6404eac3c4919de1ad38, type: 3}
-  _parrot: {fileID: 7629896988078713242, guid: b36fce94519368e448b068fd7447702a, type: 3}
-  _turtoise: {fileID: 6606228269694984071, guid: a6002dee3229d954384f4b1de9a0901d,
+  _cat: {fileID: 6647131506220806907, guid: 2798156563bcc864e8bbb6816c2af4ed, type: 3}
+  _dog: {fileID: 1693816920450361209, guid: df2f816810b59a546ac8bb319fbf564f, type: 3}
+  _mouse: {fileID: 8858668344987094152, guid: dad8eec92afafe64081f8807159779a0, type: 3}
+  _parrot: {fileID: 7629896988078713242, guid: cf2727eadbeb10046938139fffa7b22a, type: 3}
+  _turtoise: {fileID: 6606228269694984071, guid: f215510a6ec7d9f49a2983e2b6f67595,
     type: 3}
-  _rabbit: {fileID: 1069540666348384564, guid: 50bf0d89f095438448e61792c16f8bef, type: 3}
-  _goldfish: {fileID: 2356425588909462434, guid: 9dca3db7ef2697244afa1a2fa4b684c6,
+  _rabbit: {fileID: 1069540666348384564, guid: 75a792821517fa141a723776bcec475b, type: 3}
+  _goldfish: {fileID: 2356425588909462434, guid: edbb7eb4059f1034ca943fd2b823a703,
     type: 3}
   _raycastManager: {fileID: 2512387470422636671}
   _useCursor: 1

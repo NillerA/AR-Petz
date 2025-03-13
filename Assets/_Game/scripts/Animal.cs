@@ -6,22 +6,23 @@ public class Animal : MonoBehaviour
 {
 
     [SerializeField]
-    private float _speed = 10, _hungerConsubtionRate = 0.2f, _HappinessConsubtionRate = 5;
+    private float _speed = 10, _hungerConsubtionRate = 1f, _HappinessConsubtionRate = 5;
 
     private Animator _animator;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        PlayerManager.animal = gameObject;
     }
 
     private void Start()
     {
         StartCoroutine(HungerConsubtion());
-        StartCoroutine(HappinessConsubtion());
+        //StartCoroutine(HappinessConsubtion());
     }
 
-    public IEnumerator walkTo(Vector3 position, bool eat)
+    public IEnumerator walkTo(Vector3 position, bool eat, GameObject food = null)
     {
         while (Vector3.Distance(transform.position, position) > 0.1f) 
         { 
@@ -34,6 +35,11 @@ public class Animal : MonoBehaviour
         if (eat) 
         {
             _animator.SetTrigger("Eat");
+            PlayerManager.food += 10;
+            if (food != null) 
+            {
+                Destroy(food);
+            }
         }
     }
 
